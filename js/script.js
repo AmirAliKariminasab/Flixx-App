@@ -313,60 +313,60 @@ function initSwiper() {
 };
 
 // Dipslay Slider Shows
-// async function displaySliderShows() {
-//     const { results } = await fetchAPIData('tv/on_the_air');
-//     // console.log(results);
-//     results.forEach((show) => {
-//         const div = document.createElement('div');
-//         div.classList.add('swiper-slide');
-//         div.innerHTML = `
-//         <a href="tv-details.html?id=${show.id}">
-//         ${show.poster_path
-//                 ? `  <img
-//         src="https://image.tmdb.org/t/p/w500${show.poster_path}"
-//         class="card-img-top"
-//         alt="${show.title}"
-//       />` : `  <img src="images/no-image.jpg" class="card-img-top"
-//       alt="${show.title}"
-//     />`
-//             }
-//         </a>
-//         <h3>${show.name}</h3>
-//             <h4 class="swiper-rating">
-//                 <i class="fas fa-star text-secondary"></i> ${show.vote_average} / 10
-//             </h4>
-//         `;
+async function displaySliderShows() {
+    const { results } = await fetchAPIData('tv/on_the_air');
+    // console.log(results);
+    results.forEach((show) => {
+        const div = document.createElement('div');
+        div.classList.add('swiper-slide');
+        div.innerHTML = `
+        <a href="tv-details.html?id=${show.id}">
+        ${show.poster_path
+                ? `  <img
+        src="https://image.tmdb.org/t/p/w500${show.poster_path}"
+        class="card-img-top"
+        alt="${show.title}"
+      />` : `  <img src="images/no-image.jpg" class="card-img-top"
+      alt="${show.title}"
+    />`
+            }
+        </a>
+        <h3>${show.name}</h3>
+            <h4 class="swiper-rating">
+                <i class="fas fa-star text-secondary"></i> ${show.vote_average} / 10
+            </h4>
+        `;
 
-//         document.querySelector('.swiper-wrapper').appendChild(div);
+        document.querySelector('.swiper-wrapper').appendChild(div);
 
-//         initSwiperShows();
-//     })
-// };
+        initSwiperShows();
+    })
+};
 
 // Swiper
-// function initSwiperShows() {
-//     const swiper = new Swiper('.swiper', {
-//         slidesPerView: 1,
-//         spaceBetween: 30,
-//         freeMode: true,
-//         loop: true,
-//         autoplay: {
-//             delay: 4000,
-//             disableOnInteraction: false
-//         },
-//         breakpoints: {
-//             500: {
-//                 slidesPerView: 2,
-//             },
-//             700: {
-//                 slidesPerView: 3,
-//             },
-//             1200: {
-//                 slidesPerView: 4,
-//             }
-//         }
-//     })
-// };
+function initSwiperShows() {
+    const showSwiper = new Swiper('.swiper-show', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        freeMode: true,
+        loop: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false
+        },
+        breakpoints: {
+            500: {
+                slidesPerView: 2,
+            },
+            700: {
+                slidesPerView: 3,
+            },
+            1200: {
+                slidesPerView: 4,
+            }
+        }
+    })
+};
 
 // Display Bckdrop On Detail Pages
 function displayBackgroundImage(type, backgroundPath) {
@@ -489,7 +489,7 @@ function init() {
             break;
         case '/shows.html':
             displayPopularShows();
-            // displaySliderShows();
+            displaySliderShows();
             break;
         case '/movie-details.html':
             displayMovieDetails();
