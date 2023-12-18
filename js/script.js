@@ -21,7 +21,7 @@ async function fetchAPIData(endpoint) {
     showSppiner();
 
     const response = await fetch(
-        `${API_URL}${endpoint}?include_adult=true&api_key=${API_KEY}&language=en-US`
+        `${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`
     );
 
     const data = await response.json();
